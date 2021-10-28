@@ -1,0 +1,130 @@
+{
+    "contraCheque": [
+        {
+            "idContraCheque": "mpba/01/2020/1",
+            "chaveColeta": "mpba/01/2020",
+            "nome": "ZUVAL GONCALVES FERREIRA",
+            "ativo": true,
+            "remuneracoes": {
+                "remuneracao": [
+                    {
+                        "categoria": "contracheque",
+                        "item": "Remuneração do Cargo Efetivo",
+                        "valor": 35462.22
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Outras Verbas Remuneratórias, Legais ou Judiciais"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Função de Confiança ou Cargo em Comissão",
+                        "valor": 10638.67,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Gratificação Natalina",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Férias (1/3 constitucional)",
+                        "valor": 46100.89,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Abono de Permanência",
+                        "valor": 4964.71,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Outras Remunerações Temporárias",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque",
+                        "item": "Verbas indenizatórias",
+                        "valor": -1300.0,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque",
+                        "item": "Contribuição Previdenciária",
+                        "valor": 4964.71,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque",
+                        "item": "Imposto de Renda",
+                        "valor": -19787.35,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque",
+                        "item": "Retenção por Teto Constitucional",
+                        "valor": -13615.14,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Auxílio-alimentação",
+                        "valor": 1300.0,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Auxílio-transporte",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Auxílio Moradia",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Auxílio Natalidade",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Substituição Membros",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Ajuda de Custo",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Serviço Extraordinário",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Substituição de Função",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Gratificação de Serviços Especiais",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "indenizações",
+                        "item": "Diferença de Entrância",
+                        "tipoReceita": "O"
+                    }
+                ]
+            }
+        }
+    ]
+}
