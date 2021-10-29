@@ -120,19 +120,28 @@ def isNaN(string):
 def parse(data, chave_coleta, mes, ano):
     employees = {}
     folha = Coleta.FolhaDePagamento()
-    try:
-        employees.update(parse_employees(data.contracheque, chave_coleta, mes, ano))
-        update_employees(data.indenizatorias, employees, INDENIZACOES)
+    if int(ano) == 2018 or (int(ano) == 2019 and int(mes) < 7):
+        try:
+            employees.update(parse_employees(data.contracheque, chave_coleta, mes, ano))
 
-    except KeyError as e:
-        sys.stderr.write(
-            "Registro inválido ao processar verbas indenizatórias: {}".format(e)
-        )
-        os._exit(1)
+        except KeyError as e:
+            sys.stderr.write(
+                "Registro inválido ao processar contracheque: {}".format(e)
+            )
+            os._exit(1)
+    else:
+        try:
+            employees.update(parse_employees(data.contracheque, chave_coleta, mes, ano))
+            update_employees(data.indenizatorias, employees, INDENIZACOES)
+
+        except KeyError as e:
+            sys.stderr.write(
+                "Registro inválido ao processar contracheque ou indenizações: {}".format(e)
+            )
+            os._exit(1)
     for i in employees.values():
         folha.contra_cheque.append(i)
     return folha
-    # return list(employees.values())
 
 
 def format_value(element):

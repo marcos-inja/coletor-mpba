@@ -6,11 +6,11 @@ from data import load
 
 
 class TestParser(unittest.TestCase):
-    def test_jan_2018(self):
+    def test_jan_2020(self):
         self.maxDiff = None
         # Json com a saida esperada
-        with open("src/output_test/test_parser/expected.json", "r") as fp:
-            expected = json.load(fp)
+        with open("src/output_test/test_parser/expected_2020.json", "r") as fp:
+            expected_2020 = json.load(fp)
 
         files = [
             "src/output_test/test_parser/Membros ativos-contracheque-01-2020.ods",
@@ -21,7 +21,23 @@ class TestParser(unittest.TestCase):
         result_data = parse(dados, "mpba/01/2020", 1, 2020)
         # Converto o resultado do parser, em dict
         result_to_dict = MessageToDict(result_data)
-        self.assertEqual(expected, result_to_dict)
+        self.assertEqual(expected_2020, result_to_dict)
+
+    def test_jan_2018(self):
+        self.maxDiff = None
+        # Json com a saida esperada
+        with open("src/output_test/test_parser/expected_2018.json", "r") as fp:
+            expected_2018 = json.load(fp)
+
+        files = [
+            "src/output_test/test_parser/Membros ativos-contracheque-01-2018.ods",
+        ]
+
+        dados = load(files, "2018", "01")
+        result_data = parse(dados, "mpba/01/2018", 1, 2018)
+        # Converto o resultado do parser, em dict
+        result_to_dict = MessageToDict(result_data)
+        self.assertEqual(expected_2018, result_to_dict)
 
 
 if __name__ == "__main__":

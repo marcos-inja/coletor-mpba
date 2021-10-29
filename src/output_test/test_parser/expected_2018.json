@@ -1,0 +1,78 @@
+{
+    "contraCheque": [
+        {
+            "idContraCheque": "mpba/01/2018/1",
+            "chaveColeta": "mpba/01/2018",
+            "nome": "ZUVAL GONCALVES FERREIRA",
+            "ativo": true,
+            "remuneracoes": {
+                "remuneracao": [
+                    {
+                        "categoria": "contracheque",
+                        "item": "Remuneração do Cargo Efetivo",
+                        "valor": 30471.1
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Outras Verbas Remuneratórias, Legais ou Judiciais"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Função de Confiança ou Cargo em Comissão",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Gratificação Natalina",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Férias (1/3 constitucional)",
+                        "valor": 30471.1,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Abono de Permanência",
+                        "valor": 3656.53,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "categoria": "contracheque",
+                        "item": "Outras Remunerações Temporárias",
+                        "valor": 64598.73,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque",
+                        "item": "Verbas indenizatórias",
+                        "valor": -3656.53,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque",
+                        "item": "Contribuição Previdenciária",
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque",
+                        "item": "Imposto de Renda",
+                        "valor": -18591.66,
+                        "tipoReceita": "O"
+                    },
+                    {
+                        "natureza": "D",
+                        "categoria": "contracheque",
+                        "item": "Retenção por Teto Constitucional",
+                        "valor": -46007.07,
+                        "tipoReceita": "O"
+                    }
+                ]
+            }
+        }
+    ]
+}

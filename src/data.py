@@ -28,6 +28,10 @@ def load(file_names, year, month):
     """
 
     contracheque = _read([c for c in file_names if "contracheque" in c][0])
+    if int(year) == 2018 or (int(year) == 2019 and int(month) < 7):
+        # Não existe dados exclusivos de verbas indenizatórias nesse período de tempo.
+        return Data_2018(contracheque, year, month)
+
     indenizatorias = _read([i for i in file_names if "Indenizatorias" in i][0])
 
     return Data(contracheque, indenizatorias, year, month)
@@ -47,12 +51,7 @@ class Data:
          Caso o validade fique pare o script na leitura da planilha 
         de controle de dados dara um erro retornando o codigo de erro 4,
         esse codigo significa que não existe dados para a data pedida.
-         Se o validade para na leitura das planilhas, significa que elas
-        são menores que o que minimo permitido, retornando o codigo de erro 5,
-        significa que as planilhas são invalidas.
         """
-
-        MIN_ROWS = 30
 
         if not (
             os.path.isfile(
@@ -65,9 +64,25 @@ class Data:
             sys.stderr.write(f"Não existe planilhas para {self.month}/{self.year}.")
             sys.exit(STATUS_DATA_UNAVAILABLE)
 
-        if len(self.contracheque) < MIN_ROWS or len(self.indenizatorias) < MIN_ROWS:
-            print(
-                f"Os arquivos a serem consolidados tem menos que {MIN_ROWS} linhas e, por isso, são considerados inválidos.",
-                file=sys.stderr,
+class Data_2018:
+    def __init__(self, contracheque, year, month):
+        self.year = year
+        self.month = month
+        self.contracheque = contracheque
+
+    def validate(self):
+        """
+         Validação inicial dos arquivos passados como parâmetros.
+        Aborta a execução do script em caso de erro.
+         Caso o validade fique pare o script na leitura da planilha 
+        de controle de dados dara um erro retornando o codigo de erro 4,
+        esse codigo significa que não existe dados para a data pedida.
+        """
+
+        if not (
+            os.path.isfile(
+                f"./output/Membros ativos-contracheque-{self.month}-{self.year}.ods"
             )
-            sys.exit(STATUS_INVALID_FILE)
+        ):
+            sys.stderr.write(f"Não existe planilha para {self.month}/{self.year}.")
+            sys.exit(STATUS_DATA_UNAVAILABLE)
