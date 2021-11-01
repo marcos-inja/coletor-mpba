@@ -2,7 +2,9 @@
 import sys
 import os
 import crawler
-#from parser import parse
+from parser import parse
+import metadado
+import data
 from coleta import coleta_pb2 as Coleta, IDColeta
 from google.protobuf.timestamp_pb2 import Timestamp
 from google.protobuf import text_format
@@ -30,12 +32,11 @@ if "GIT_COMMIT" in os.environ:
 else:
     crawler_version = "unspecified"
 
-# Main execution
-def main():
-    file_names = crawler.crawl(year, month, output_path)
 
+def parse_execution(data, file_names):
     # Cria objeto com dados da coleta.
     coleta = Coleta.Coleta()
+    coleta.chave_coleta = IDColeta("mpba", month, year)
     coleta.orgao = "mpba"
     coleta.mes = int(month)
     coleta.ano = int(year)
@@ -45,6 +46,31 @@ def main():
     timestamp = Timestamp()
     timestamp.GetCurrentTime()
     coleta.timestamp_coleta.CopyFrom(timestamp)
+
+    # Consolida folha de pagamento
+    folha = Coleta.FolhaDePagamento()
+    folha = parse(data, coleta.chave_coleta, int(month), int(year))
+
+    # Monta resultado da coleta.
+    rc = Coleta.ResultadoColeta()
+    rc.folha.CopyFrom(folha)
+    rc.coleta.CopyFrom(coleta)
+
+    metadados = metadado.captura(int(month), int(year))
+    rc.metadados.CopyFrom(metadados)
+
+    # Imprime a versão textual na saída padrão.
+    print(text_format.MessageToString(rc), flush=True, end="")
+
+
+# Main execution
+def main():
+    file_names = crawler.crawl(year, month, output_path)
+
+    dados = data.load(file_names, year, month)
+    dados.validate()  # Se não acontecer nada, é porque está tudo ok!
+
+    parse_execution(dados, file_names)
 
 
 if __name__ == "__main__":
