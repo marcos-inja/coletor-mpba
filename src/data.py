@@ -64,19 +64,17 @@ class Data:
             sys.stderr.write(f"Não existe planilhas para {self.month}/{self.year}.")
             sys.exit(STATUS_DATA_UNAVAILABLE)
 
+
 class Data_2018:
     def __init__(self, contracheque, year, month):
         self.year = year
         self.month = month
         self.contracheque = contracheque
 
-    def validate(self):
+    def validate_2018(self):
         """
-         Validação inicial dos arquivos passados como parâmetros.
-        Aborta a execução do script em caso de erro.
-         Caso o validade fique pare o script na leitura da planilha 
-        de controle de dados dara um erro retornando o codigo de erro 4,
-        esse codigo significa que não existe dados para a data pedida.
+         Essa validação só leva em consideração o arquivo Membros Ativos-contracheque,
+         pois até Julho de 2019 o MPBA não disponibiliza o arquivo Verbas Indenizatórias
         """
 
         if not (
