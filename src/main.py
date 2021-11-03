@@ -71,9 +71,9 @@ def main():
 
     # Se não acontecer nada, é porque está tudo ok!
     if int(year) == 2018 or (int(year) == 2019 and int(month) < 7):
-        dados.validate_2018()
+        dados.validate_2018(output_path)
     else:
-        dados.validate()
+        dados.validate(output_path)
 
     parse_execution(dados, file_names)
 

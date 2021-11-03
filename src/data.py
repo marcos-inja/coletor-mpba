@@ -44,7 +44,7 @@ class Data:
         self.contracheque = contracheque
         self.indenizatorias = indenizatorias
 
-    def validate(self):
+    def validate(self, output_path):
         """
          Validação inicial dos arquivos passados como parâmetros.
         Aborta a execução do script em caso de erro.
@@ -55,10 +55,10 @@ class Data:
 
         if not (
             os.path.isfile(
-                f"./output/Membros ativos-contracheque-{self.month}-{self.year}.ods"
+                output_path + f"/Membros ativos-contracheque-{self.month}-{self.year}.ods"
             )
             or os.path.isfile(
-                f"./output/Membros ativos-Verbas Indenizatorias-{self.month}-{self.year}.ods"
+                output_path + f"/Membros ativos-Verbas Indenizatorias-{self.month}-{self.year}.ods"
             )
         ):
             sys.stderr.write(f"Não existe planilhas para {self.month}/{self.year}.")
@@ -71,7 +71,7 @@ class Data_2018:
         self.month = month
         self.contracheque = contracheque
 
-    def validate_2018(self):
+    def validate_2018(self, output_path):
         """
          Essa validação só leva em consideração o arquivo Membros Ativos-contracheque,
          pois até Julho de 2019 o MPBA não disponibiliza o arquivo Verbas Indenizatórias
@@ -79,7 +79,7 @@ class Data_2018:
 
         if not (
             os.path.isfile(
-                f"./output/Membros ativos-contracheque-{self.month}-{self.year}.ods"
+                output_path + f"/Membros ativos-contracheque-{self.month}-{self.year}.ods"
             )
         ):
             sys.stderr.write(f"Não existe planilha para {self.month}/{self.year}.")
