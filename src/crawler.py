@@ -131,7 +131,7 @@ def crawl(year, month, output_path):
             file_name_indemnity = (
                 element
                 + "-"
-                + "Verbas Indenizatorias"
+                + "verbas-indenizatorias"
                 + "-"
                 + month
                 + "-"

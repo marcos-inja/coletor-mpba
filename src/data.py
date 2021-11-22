@@ -32,7 +32,7 @@ def load(file_names, year, month):
         # Não existe dados exclusivos de verbas indenizatórias nesse período de tempo.
         return Data_2018(contracheque, year, month)
 
-    indenizatorias = _read([i for i in file_names if "Indenizatorias" in i][0])
+    indenizatorias = _read([i for i in file_names if "indenizatorias" in i][0])
 
     return Data(contracheque, indenizatorias, year, month)
 
@@ -55,10 +55,10 @@ class Data:
 
         if not (
             os.path.isfile(
-                output_path + f"/Membros ativos-contracheque-{self.month}-{self.year}.ods"
+                output_path + f"/membros-ativos-contracheque-{self.month}-{self.year}.ods"
             )
             or os.path.isfile(
-                output_path + f"/Membros ativos-Verbas Indenizatorias-{self.month}-{self.year}.ods"
+                output_path + f"/membros-ativos-verbas-indenizatorias-{self.month}-{self.year}.ods"
             )
         ):
             sys.stderr.write(f"Não existe planilhas para {self.month}/{self.year}.")
@@ -79,7 +79,7 @@ class Data_2018:
 
         if not (
             os.path.isfile(
-                output_path + f"/Membros ativos-contracheque-{self.month}-{self.year}.ods"
+                output_path + f"/membros-ativos-contracheque-{self.month}-{self.year}.ods"
             )
         ):
             sys.stderr.write(f"Não existe planilha para {self.month}/{self.year}.")
